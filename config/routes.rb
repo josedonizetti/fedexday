@@ -1,4 +1,11 @@
 Projetos::Application.routes.draw do
+  resources :projetos
+
+  root :to => "projetos#index"
+  devise_for :usuarios
+  get "/enroll" => "projetos#enroll", :as => :projetos_enroll
+  get "/cancel" => "projetos#cancel", :as => :projetos_cancel
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

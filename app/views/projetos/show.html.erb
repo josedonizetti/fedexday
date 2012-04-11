@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @projeto.nome %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @projeto.descricao %>
+</p>
+
+<p>
+  <b>Criador:</b>
+  <%= @projeto.usuario.email %>
+</p>
+
+<p>
+	<b>Time:</b>
+	<% @enrollments.each do |enroll| %>
+		<%= enroll.usuario.email %>
+	<% end %>
+</p>
+
+<%= link_to 'Edit', edit_projeto_path(@projeto) %> |
+<%= link_to 'Back', projetos_path %>
