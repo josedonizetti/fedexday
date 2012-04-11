@@ -31,7 +31,7 @@
           <a class="brand" href="#">Fedex Day Projetos</a>
           <div class="container nav-collapse">
             <ul class="nav">
-				<% if current_user %>
+				<% if !current_user.nil %>
 	              <li><%= link_to "Logout", "/usuarios/sign_out" ,:method => :delete  %></li>
 				<% end %>
             </ul>
