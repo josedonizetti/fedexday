@@ -16,14 +16,12 @@
     <td><%= projeto.nome %></td>
     <td><%= projeto.descricao %></td>
     <td><%= projeto.usuario.email %></td>
-	<% if current_usuario and current_usuario.email != projeto.usuario.email %>
+	<% if current_usuario.email != projeto.usuario.email %>
 	<% if projeto.enrolled? current_usuario %>
 	    <td><%= link_to 'Enroll', {:controller => "projetos", :action => "enroll", :projeto => projeto, :usuario => current_usuario}, :class => "btn btn-success" %></td>
 	<% else %>
     	<td><%= link_to 'Cancel',{:controller => "projetos", :action => "cancel", :usuario => current_usuario}, :class => "btn  btn-danger"%></td>
 	<% end %>
-        <% else %>
-	    <td><%= link_to 'Enroll', {:controller => "projetos", :action => "enroll", :projeto => projeto, :usuario => current_usuario}, :class => "btn btn-success" %></td>
 	<%end%>
 	<td><%= link_to 'Team', projeto %></td>
 	<% if current_usuario.email == projeto.usuario.email %>

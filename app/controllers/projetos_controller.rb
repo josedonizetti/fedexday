@@ -1,5 +1,5 @@
 class ProjetosController < ApplicationController
-  before_filter :authenticate_usuario!, :except => [:index, :show]
+  before_filter :authenticate_usuario!
   # GET /projetos
   # GET /projetos.json
   def index
