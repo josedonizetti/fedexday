@@ -16,6 +16,7 @@
     <td><%= projeto.nome %></td>
     <td><%= projeto.descricao %></td>
     <td><%= projeto.usuario.email %></td>
+        <% if current_usuario %>
 	<% if current_usuario.email != projeto.usuario.email %>
 	<% if projeto.enrolled? current_usuario %>
 	    <td><%= link_to 'Enroll', {:controller => "projetos", :action => "enroll", :projeto => projeto, :usuario => current_usuario}, :class => "btn btn-success" %></td>
@@ -23,10 +24,15 @@
     	<td><%= link_to 'Cancel',{:controller => "projetos", :action => "cancel", :usuario => current_usuario}, :class => "btn  btn-danger"%></td>
 	<% end %>
 	<%end%>
+        <% else %>
+	    <td><%= link_to 'Enroll', {:controller => "projetos", :action => "enroll", :projeto => projeto, :usuario => current_usuario}, :class => "btn btn-success" %></td>
+	<%end%>
 	<td><%= link_to 'Team', projeto %></td>
+        <% if current_usuario %>
 	<% if current_usuario.email == projeto.usuario.email %>
     	<td><%= link_to 'Edit', edit_projeto_path(projeto) %></td>
     	<td><%= link_to 'Destroy', projeto, confirm: 'Are you sure?', method: :delete %></td
+	<% end %>
 	<% end %>
   </tr>
 <% end %>

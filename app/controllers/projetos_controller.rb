@@ -1,5 +1,5 @@
 class ProjetosController < ApplicationController
-  before_filter :authenticate_usuario!
+  before_filter :authenticate_usuario!, :expect => [:index, :show]
   # GET /projetos
   # GET /projetos.json
   def index
