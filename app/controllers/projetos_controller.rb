@@ -1,5 +1,5 @@
 class ProjetosController < ApplicationController
-  before_filter :authenticate_usuario!
+  before_filter :authenticate_usuario!, :except => [:index, :show]
   # GET /projetos
   # GET /projetos.json
   def index
@@ -87,13 +87,13 @@ class ProjetosController < ApplicationController
   def enroll
     enroll = Enroll.find_by_usuario_id params[:usuario]
     enroll.destroy unless enroll.nil?
-    
+
     enroll = Enroll.new
     enroll.projeto = Projeto.find params[:projeto]
     enroll.usuario = current_usuario
-    
+
     enroll.save
-    
+
     flash[:message] = "You have enrolled with success"
     redirect_to :controller => :projetos, :action => :index
   end
