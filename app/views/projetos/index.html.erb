@@ -1,4 +1,4 @@
-<h1>Listing projetos</h1>
+<h1>Listagem de projetos</h1>
 
 <table class="table table-stripped">
   <tr>
@@ -27,11 +27,11 @@
         <% else %>
 	    <td><%= link_to 'Enroll', {:controller => "projetos", :action => "enroll", :projeto => projeto, :usuario => current_usuario}, :class => "btn btn-success" %></td>
 	<%end%>
-	<td><%= link_to 'Team', projeto %></td>
+	<td><%= link_to 'Time', projeto %></td>
         <% if current_usuario %>
 	<% if current_usuario.email == projeto.usuario.email %>
-    	<td><%= link_to 'Edit', edit_projeto_path(projeto) %></td>
-    	<td><%= link_to 'Destroy', projeto, confirm: 'Are you sure?', method: :delete %></td
+    	<td><%= link_to 'Editar', edit_projeto_path(projeto) %></td>
+    	<td><%= link_to 'Excluir', projeto, confirm: 'Tem certeza que deseja excluir esse projeto?', method: :delete %></td
 	<% end %>
 	<% end %>
   </tr>
@@ -40,4 +40,4 @@
 
 <br />
 
-<%= link_to 'New Projeto', new_projeto_path, :class => "btn btn-primary" %>
+<%= link_to 'Novo Projeto', new_projeto_path, :class => "btn btn-primary" %>
