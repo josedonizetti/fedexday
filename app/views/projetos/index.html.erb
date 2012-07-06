@@ -19,13 +19,13 @@
         <% if current_usuario %>
 	<% if current_usuario.email != projeto.usuario.email %>
 	<% if projeto.enrolled? current_usuario %>
-	    <td><%= link_to 'Enroll', {:controller => "projetos", :action => "enroll", :projeto => projeto, :usuario => current_usuario}, :class => "btn btn-success" %></td>
+	    <td><%= link_to 'Unir-se ao time', {:controller => "projetos", :action => "enroll", :projeto => projeto, :usuario => current_usuario}, :class => "btn btn-success" %></td>
 	<% else %>
-    	<td><%= link_to 'Cancel',{:controller => "projetos", :action => "cancel", :usuario => current_usuario}, :class => "btn  btn-danger"%></td>
+    	<td><%= link_to 'Sair do time',{:controller => "projetos", :action => "cancel", :usuario => current_usuario}, :class => "btn  btn-danger"%></td>
 	<% end %>
 	<%end%>
         <% else %>
-	    <td><%= link_to 'Enroll', {:controller => "projetos", :action => "enroll", :projeto => projeto, :usuario => current_usuario}, :class => "btn btn-success" %></td>
+	    <td><%= link_to 'Unir-se ao time', {:controller => "projetos", :action => "enroll", :projeto => projeto, :usuario => current_usuario}, :class => "btn btn-success" %></td>
 	<%end%>
 	<td><%= link_to 'Time', projeto %></td>
         <% if current_usuario %>
