@@ -5,7 +5,7 @@
     <th>Nome</th>
     <th>Descricao</th>
     <th>Criador</th>
-    <th></th>
+    <th>Time</th>
     <th></th
     <th></th>
     <th></th>
@@ -16,6 +16,13 @@
     <td><%= projeto.nome %></td>
     <td><%= projeto.descricao %></td>
     <td><%= projeto.usuario.email %></td>
+	<td>
+		<%if projeto.enrollments%>
+			<% projeto.enrollments.each do |enroll| %>
+				<%= enroll.usuario.email %><br/>
+			<% end %>
+		<% end %>
+	</td>
         <% if current_usuario %>
 	<% if current_usuario.email != projeto.usuario.email %>
 	<% if projeto.enrolled? current_usuario %>
@@ -27,7 +34,6 @@
         <% else %>
 	    <td><%= link_to 'Unir-se ao time', {:controller => "projetos", :action => "enroll", :projeto => projeto, :usuario => current_usuario}, :class => "btn btn-success" %></td>
 	<%end%>
-	<td><%= link_to 'Time', projeto %></td>
         <% if current_usuario %>
 	<% if current_usuario.email == projeto.usuario.email %>
     	<td><%= link_to 'Editar', edit_projeto_path(projeto) %></td>
